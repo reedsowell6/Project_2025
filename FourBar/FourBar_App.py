@@ -1,4 +1,5 @@
 # FourBar_app.py
+
 #region imports
 from FourBar_GUI import Ui_Form
 from FourBarLinkage_MVC import FourBarLinkage_Controller
@@ -34,22 +35,30 @@ class MainWindow(Ui_Form, qtw.QWidget):
         # ── angle‐limit controls ──
         self.lbl_MinAngle = qtw.QLabel("Min Angle (°)")
         self.nud_MinAngle = qtw.QDoubleSpinBox()
-        self.nud_MinAngle.setRange(0,360);  self.nud_MinAngle.setValue(0)
+        self.nud_MinAngle.setRange(0, 360)
+        self.nud_MinAngle.setValue(0)
         self.lbl_MaxAngle = qtw.QLabel("Max Angle (°)")
         self.nud_MaxAngle = qtw.QDoubleSpinBox()
-        self.nud_MaxAngle.setRange(0,360);  self.nud_MaxAngle.setValue(360)
+        self.nud_MaxAngle.setRange(0, 360)
+        self.nud_MaxAngle.setValue(360)
 
         for w in (self.lbl_MinAngle, self.nud_MinAngle, self.lbl_MaxAngle, self.nud_MaxAngle):
             self.horizontalLayout.addWidget(w)
 
         # ── simulation parameter controls ──
         self.lbl_MassInput = qtw.QLabel("Mass (kg)")
-        self.nud_MassInput = qtw.QDoubleSpinBox();  self.nud_MassInput.setRange(0.1,100);  self.nud_MassInput.setValue(10)
-        self.lbl_SpringK   = qtw.QLabel("Spring k (N/m)")
-        self.nud_SpringK   = qtw.QDoubleSpinBox();  self.nud_SpringK.setRange(0,1e3);  self.nud_SpringK.setValue(self.FBL_C.FBL_M.Spring.k)
-        self.lbl_DampC     = qtw.QLabel("Damp c (N·s/m)")
-        self.nud_DampC     = qtw.QDoubleSpinBox();  self.nud_DampC.setRange(0,1e3);  self.nud_DampC.setValue(self.FBL_C.FBL_M.DashPot.c)
-        self.btn_RunSim    = qtw.QPushButton("Run Simulation")
+        self.nud_MassInput = qtw.QDoubleSpinBox()
+        self.nud_MassInput.setRange(0.1, 100)
+        self.nud_MassInput.setValue(10)
+        self.lbl_SpringK = qtw.QLabel("Spring k (N/m)")
+        self.nud_SpringK = qtw.QDoubleSpinBox()
+        self.nud_SpringK.setRange(0, 1e3)
+        self.nud_SpringK.setValue(self.FBL_C.FBL_M.Spring.k)
+        self.lbl_DampC = qtw.QLabel("Damp c (N·s/m)")
+        self.nud_DampC = qtw.QDoubleSpinBox()
+        self.nud_DampC.setRange(0, 1e3)
+        self.nud_DampC.setValue(self.FBL_C.FBL_M.DashPot.c)
+        self.btn_RunSim = qtw.QPushButton("Run Simulation")
 
         for w in (
             self.lbl_MassInput, self.nud_MassInput,
@@ -106,6 +115,6 @@ class MainWindow(Ui_Form, qtw.QWidget):
 
 if __name__ == '__main__':
     app = qtw.QApplication(sys.argv)
-    mw  = MainWindow()
+    mw = MainWindow()
     mw.setWindowTitle('Four Bar Linkage')
     sys.exit(app.exec())
